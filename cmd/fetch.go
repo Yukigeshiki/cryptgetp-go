@@ -25,7 +25,7 @@ type ResponseBody struct {
 
 var fetchCmd = &cobra.Command{
 	Use:   "fetch",
-	Short: "Fetch the price of a given cryptocurrency returned in a given fiat currency.",
+	Short: "Fetch the price of a given cryptocurrency (--crypto) returned in a given fiat currency (--in).",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var (
 			err  error
@@ -73,6 +73,6 @@ func init() {
 	rootCmd.AddCommand(fetchCmd)
 
 	fetchCmd.Flags().StringVarP(&crypto, "crypto", "c", "BTC", "The cryptocurrency to fetch")
-	fetchCmd.Flags().StringVarP(&in, "in", "i", "USD", "The fiat price will be returned in")
+	fetchCmd.Flags().StringVarP(&in, "in", "i", "USD", "The fiat currency the price will be returned in")
 	fetchCmd.Flags().StringVarP(&key, "key", "k", "", "The API key from https://www.coinapi.io/pricing?apikey")
 }

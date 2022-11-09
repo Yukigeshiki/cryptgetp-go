@@ -8,9 +8,9 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "cryptgetp",
-	Short: "A just for fun CLI application to fetch cryptocurrency prices",
-	Long: `To fetch the price of your preferred cryptocurrency, returned in your preferred fiat currency, just run with relevant flags. For example:
-$ ./cryptgetp fetch --crypto BTC --in USD`,
+	Short: "A just for fun CLI tool to fetch cryptocurrency prices written in Go",
+	Long: `To fetch the price of your preferred cryptocurrency, returned in your preferred fiat currency, just run with the relevant flags. For example:
+$ ./cryptgetp fetch --crypto BTC --in USD --key <your-key-here>`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
