@@ -17,4 +17,12 @@ Once you have an API key you can run:
 ./cryptgetp fetch --crypto BTC --in USD --key <your-key-here>
 ```
 
+You can also run:
+
+```bash
+go run cryptgetp.go fetch --crypto BTC --in USD --key <your-key-here>
+```
+
+if you'd prefer not to build the application first.
+
 You get 100 free calls per day with your API key. More information about the API can be found [here](https://www.coinapi.io).
