@@ -1,2 +1,2 @@
 # cryptgetp-go
-Crypt-Get-P - a just for fun CLI to fetch cryptocurrency prices
+Crypt-Get-P - a just for fun CLI tool to fetch cryptocurrency prices
