@@ -17,4 +17,4 @@ Once you have an API key you can run:
 ./cryptgetp fetch --crypto BTC --in USD --key <your-key-here>
 ```
 
-You get 100 free calls per day with your API key. Information about what currencies are available can be found [here](https://www.coinapi.io).
+You get 100 free calls per day with your API key. More information about the API can be found [here](https://www.coinapi.io).
