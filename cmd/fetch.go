@@ -57,7 +57,7 @@ var fetchCmd = &cobra.Command{
 		if t != "" {
 			fmt.Println(fmt.Sprintf("At the time %s the price of %s in %s was %s", t, base, quote, r))
 		} else {
-			fmt.Println("Unable to fetch price. Check your API key or try again later.")
+			fmt.Println("Unable to fetch price. Check your API key, currency values, or try again later.")
 		}
 
 		return nil
