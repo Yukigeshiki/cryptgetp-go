@@ -52,13 +52,15 @@ var fetchCmd = &cobra.Command{
 		if err = json.Unmarshal(body, &rb); err != nil {
 			return err
 		}
+		defer func(Body io.ReadCloser) {
+			_ = Body.Close()
+		}(res.Body)
 
-		t, base, quote, r := rb.getValues()
-		if t != "" {
-			fmt.Println(fmt.Sprintf("At the time %s the price of %s in %s was %s", t, base, quote, r))
-		} else {
-			fmt.Println("Unable to fetch price. Check your API key, currency values, or try again later.")
+		if res.StatusCode != http.StatusOK {
+			return fmt.Errorf("unable to fetch price - check your API key, currency values, or try again later")
 		}
+		t, base, quote, r := rb.getValues()
+		fmt.Println(fmt.Sprintf("At the time %s the price of %s in %s was %s", t, base, quote, r))
 
 		return nil
 	},
