@@ -45,7 +45,6 @@ var fetchCmd = &cobra.Command{
 		if res, err = c.Do(req); err != nil {
 			return err
 		}
-
 		if body, err = io.ReadAll(res.Body); err != nil {
 			return err
 		}
@@ -67,7 +66,7 @@ var fetchCmd = &cobra.Command{
 }
 
 // getValues returns a tuple of response body values
-func (rb ResponseBody) getValues() (string, string, string, string) {
+func (rb *ResponseBody) getValues() (string, string, string, string) {
 	return rb.Time, rb.AssetIdBase, rb.AssetIdQuote, fmt.Sprintf("%f", rb.Rate)
 }
 
