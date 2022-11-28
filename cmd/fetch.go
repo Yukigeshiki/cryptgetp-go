@@ -55,7 +55,7 @@ var fetchCmd = &cobra.Command{
 			return fmt.Errorf("unable to fetch price - check your API key, currency values, or try again later")
 		}
 		t, base, quote, r := rb.getValues()
-		fmt.Println(fmt.Sprintf("At the time %s the price of %s in %s was %s", t, base, quote, r))
+		fmt.Printf("At the time %s the price of %s in %s was %s\n", t, base, quote, r)
 
 		return nil
 	},
