@@ -27,25 +27,21 @@ var fetchCmd = &cobra.Command{
 	Use:   "fetch",
 	Short: "Fetch the price of a given cryptocurrency (--crypto) returned in a given fiat currency (--in).",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		var (
-			err  error
-			body []byte
-			req  *http.Request
-			res  *http.Response
-		)
-
 		url := fmt.Sprintf("%s/%s/%s", CoinApiUrl, crypto, in)
 
 		rb := ResponseBody{}
 		c := &http.Client{}
-		if req, err = http.NewRequest("GET", url, nil); err != nil {
+		req, err := http.NewRequest("GET", url, nil)
+		if err != nil {
 			return err
 		}
 		req.Header.Set("X-CoinAPI-Key", key)
-		if res, err = c.Do(req); err != nil {
+		res, err := c.Do(req)
+		if err != nil {
 			return err
 		}
-		if body, err = io.ReadAll(res.Body); err != nil {
+		body, err := io.ReadAll(res.Body)
+		if err != nil {
 			return err
 		}
 		if err = json.Unmarshal(body, &rb); err != nil {
