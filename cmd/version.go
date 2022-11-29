@@ -9,7 +9,7 @@ var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "Print the version number of Crypt-Get-P.",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Crypt-Get-P v0.1")
+		fmt.Println("Crypt-Get-P v0.2")
 	},
 }
 
