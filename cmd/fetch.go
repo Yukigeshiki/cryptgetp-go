@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-const CoinApiUrl = "https://rest.coinapi.io/v1/exchangerate"
+const coinApiUrl = "https://rest.coinapi.io/v1/exchangerate"
 
 var (
 	crypto string
@@ -30,7 +30,7 @@ var fetchCmd = &cobra.Command{
 }
 
 var fetch = func(cmd *cobra.Command, args []string) error {
-	url := fmt.Sprintf("%s/%s/%s", CoinApiUrl, crypto, in)
+	url := fmt.Sprintf("%s/%s/%s", coinApiUrl, crypto, in)
 
 	rb := ResponseBody{}
 	c := &http.Client{}
@@ -55,7 +55,7 @@ var fetch = func(cmd *cobra.Command, args []string) error {
 	}(res.Body)
 
 	if res.StatusCode != http.StatusOK {
-		return fmt.Errorf("request to https://rest.coinapi.io/v1/exchangerate failed with status code %d", res.StatusCode)
+		return fmt.Errorf("request to %s/%s/%s failed with status code %d", coinApiUrl, crypto, in, res.StatusCode)
 	}
 	t, base, quote, r := rb.getValues()
 	fmt.Printf("At the time %s the price of %s in %s was %f\n", t, base, quote, r)
