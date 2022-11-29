@@ -14,6 +14,6 @@ func TestFetch(t *testing.T) {
 	assert.Equal(
 		t,
 		val,
-		fmt.Errorf("request to https://rest.coinapi.io/v1/exchangerate failed with status code 401"),
+		fmt.Errorf("request to https://rest.coinapi.io/v1/exchangerate/BTC/USD failed with status code 401"),
 	)
 }
