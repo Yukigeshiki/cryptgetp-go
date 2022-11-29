@@ -55,15 +55,15 @@ var fetchCmd = &cobra.Command{
 			return fmt.Errorf("unable to fetch price - check your API key, currency values, or try again later")
 		}
 		t, base, quote, r := rb.getValues()
-		fmt.Printf("At the time %s the price of %s in %s was %s\n", t, base, quote, r)
+		fmt.Printf("At the time %s the price of %s in %s was %f\n", t, base, quote, r)
 
 		return nil
 	},
 }
 
 // getValues returns a tuple of response body values
-func (rb *ResponseBody) getValues() (string, string, string, string) {
-	return rb.Time, rb.AssetIdBase, rb.AssetIdQuote, fmt.Sprintf("%f", rb.Rate)
+func (rb *ResponseBody) getValues() (string, string, string, float64) {
+	return rb.Time, rb.AssetIdBase, rb.AssetIdQuote, rb.Rate
 }
 
 func init() {
