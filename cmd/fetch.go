@@ -11,9 +11,7 @@ import (
 const coinApiUrl = "https://rest.coinapi.io/v1/exchangerate"
 
 var (
-	crypto string
-	in     string
-	key    string
+	crypto, in, key string
 )
 
 type ResponseBody struct {
