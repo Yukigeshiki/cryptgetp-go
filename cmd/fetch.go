@@ -32,7 +32,7 @@ var fetch = func(cmd *cobra.Command, args []string) error {
 
 	rb := ResponseBody{}
 	c := &http.Client{}
-	req, err := http.NewRequest("GET", url, nil)
+	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
 		return err
 	}
