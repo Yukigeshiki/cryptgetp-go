@@ -30,8 +30,8 @@ var fetchCmd = &cobra.Command{
 var fetch = func(cmd *cobra.Command, args []string) error {
 	url := fmt.Sprintf("%s/%s/%s", coinApiUrl, crypto, in)
 
-	rb := ResponseBody{}
-	c := &http.Client{}
+	rb := new(ResponseBody)
+	c := new(http.Client)
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
 		return err
@@ -45,11 +45,11 @@ var fetch = func(cmd *cobra.Command, args []string) error {
 	if err != nil {
 		return err
 	}
-	if err = json.Unmarshal(body, &rb); err != nil {
+	if err = json.Unmarshal(body, rb); err != nil {
 		return err
 	}
-	defer func(Body io.ReadCloser) {
-		_ = Body.Close()
+	defer func(body io.ReadCloser) {
+		_ = body.Close()
 	}(res.Body)
 
 	if res.StatusCode != http.StatusOK {
