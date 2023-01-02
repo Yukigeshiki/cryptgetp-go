@@ -29,9 +29,9 @@ var fetchCmd = &cobra.Command{
 
 var fetch = func(cmd *cobra.Command, args []string) error {
 	url := fmt.Sprintf("%s/%s/%s", coinApiUrl, crypto, in)
-
 	rb := new(ResponseBody)
 	c := new(http.Client)
+
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
 		return err
@@ -55,15 +55,9 @@ var fetch = func(cmd *cobra.Command, args []string) error {
 	if res.StatusCode != http.StatusOK {
 		return fmt.Errorf("request to %s/%s/%s failed with status code %d", coinApiUrl, crypto, in, res.StatusCode)
 	}
-	t, base, quote, r := rb.getValues()
-	fmt.Printf("At the time %s the price of %s in %s was %f\n", t, base, quote, r)
+	fmt.Printf("At the time %s the price of %s in %s was %f\n", rb.Time, rb.AssetIdBase, rb.AssetIdQuote, rb.Rate)
 
 	return nil
-}
-
-// getValues returns a tuple of response body values
-func (rb *ResponseBody) getValues() (string, string, string, float64) {
-	return rb.Time, rb.AssetIdBase, rb.AssetIdQuote, rb.Rate
 }
 
 func init() {
